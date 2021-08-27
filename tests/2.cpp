@@ -8,7 +8,8 @@ int main()
 
 	Log::I("Crash test");
 
-	throw ECONNABORTED;
+	errno = EFAULT;
+	throw 0;
 
 	return 0;
 }
