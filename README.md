@@ -2,7 +2,7 @@
 
 Usage:
 
-```
+```cpp
 #include "log.hpp"
 
 int main()
