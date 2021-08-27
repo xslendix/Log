@@ -6,6 +6,7 @@
 #include <cstring>
 #include <fstream>
 #include <sstream>
+#include <errno.h>
 
 #ifndef __has_include
   static_assert(false, "__has_include not supported");
@@ -148,7 +149,26 @@ namespace Log {
 	{
 		std::stringstream ss;
 
-		ss << "Exception detected: " << std::strerror(errno);
+		ss << "Exception detected: ";
+
+		try {
+			std::rethrow_exception(std::current_exception());
+
+		} catch (const std::system_error &ex) {
+
+			ss << typeid(ex).name();
+			ss << " Error: " << ex.code() << " - " << ex.what();
+
+		} catch (const std::exception &ex) {
+
+			ss << typeid(ex).name();
+			ss << " what(): " << ex.what();
+
+		} catch (...) {
+			ss << typeid(std::current_exception()).name();
+		}
+		
+ 		ss << " Errno: " << errno << ": " << std::strerror(errno);
 
 		E(ss.str());
 

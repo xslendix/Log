@@ -8,8 +8,7 @@ int main()
 
 	Log::I("Crash test");
 
-	errno = EFAULT;
-	throw 0;
+	throw std::system_error(EFAULT, std::generic_category());
 
 	return 0;
 }
