@@ -66,6 +66,8 @@ namespace Log {
 	std::ofstream _current_file;
 	std::string _filename;
 
+	bool _initialized = false;
+
 	void SetLevel(const Level level)
 	{
 		_current_level = level;
@@ -76,22 +78,24 @@ namespace Log {
 	{
 		std::string prefix = "";
 
-		switch (level) {
-			case INFO:
-				prefix = "INFO:  ";
-				break;
-			case DEBUG:
-				prefix = "DEBUG: ";
-				break;
-			case WARN:
-				prefix = "WARN:  ";
-				break;
-			case ERROR:
-				prefix = "ERROR: ";
-				break;
-		}
+		if (_initialized) {
+			switch (level) {
+				case INFO:
+					prefix = "INFO:  ";
+					break;
+				case DEBUG:
+					prefix = "DEBUG: ";
+					break;
+				case WARN:
+					prefix = "WARN:  ";
+					break;
+				case ERROR:
+					prefix = "ERROR: ";
+					break;
+			}
 
-		_current_file << '[' << _current_date_time() << "] " << prefix << data << '\n';
+			_current_file << '[' << _current_date_time() << "] " << prefix << data << '\n';
+		}
 
 		if (level < _current_level)
 			return;
@@ -191,6 +195,9 @@ namespace Log {
 
 		if (!fs::exists(_filename))
 			_current_file = std::ofstream(_filename);
+
+		_initialized = true;
+
 	}
 
 }
