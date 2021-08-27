@@ -1,4 +1,4 @@
-# Simple header-only logging library
+# Header-only logging library
 
 Usage:
 
