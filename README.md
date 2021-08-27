@@ -7,8 +7,8 @@ Usage:
 
 int main()
 {
-	Log::Init();      // Initialize for logs directory.
-	Log::Init(false); // Initialize for logs directory without error and exit handling.
+	Log::Init();      // Initialize for logging in files with error and exit handling.
+	Log::Init(false); // Initialize for logging in files without error and exit handling.
 
 	Log::I("Info test");
 	Log::D("Debug test");
