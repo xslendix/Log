@@ -19,5 +19,5 @@ int main()
 }
 ```
 
-View ![tests](tests) for more examples.
+View [tests](tests) for more examples.
 
