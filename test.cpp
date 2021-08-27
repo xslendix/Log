@@ -2,6 +2,8 @@
 
 int main()
 {
+	Log::Init();
+
 	Log::I("Info test");
 	Log::D("Debug test");
 	Log::W("Warning test");

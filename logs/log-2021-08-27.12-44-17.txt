@@ -1,0 +1,5 @@
+[2021-08-27.12:44:17] INFO:  Info test
+[2021-08-27.12:44:17] DEBUG: Debug test
+[2021-08-27.12:44:17] WARN:  Warning test
+[2021-08-27.12:44:17] ERROR: Error test
+[2021-08-27.12:44:17] INFO:  Safely exiting...
